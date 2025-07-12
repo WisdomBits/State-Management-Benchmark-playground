@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+  height: 100vh;
 }
 
 .container {
@@ -14,7 +19,7 @@
 }
 
 .heading {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: #00ff99;
     margin-bottom: 16px;

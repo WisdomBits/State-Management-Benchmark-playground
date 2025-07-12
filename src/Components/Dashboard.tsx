@@ -4,6 +4,7 @@ import { benchmarkLogger } from "../lib/benchmarkLogger";
 import "../benchmarkDashboard.css"
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getComparisonStats } from "../lib/statsCalc";
 
 export default function BenchmarkDashboard() {
   const navigate = useNavigate();
@@ -21,15 +22,34 @@ export default function BenchmarkDashboard() {
     <div className="dashboardPage">
       <div className="dashboardContainer">
         {Object.keys(summary).length > 0 && (
+  <div className="perfSummaryCard">
+    <h2 className="perfSummaryHeading">🚀 Performance Summary</h2>
+    {getComparisonStats(summary).length === 0 ? (
+      <p className="perfSummaryEmpty">Run benchmarks to see comparative performance here.</p>
+    ) : (
+      <ul className="perfSummaryList">
+        {getComparisonStats(summary).map((stat) => (
+          <li key={stat.lib}>
+            Overwatch TS is <span className="perfHighlight">{stat.timesFaster}x</span> (~{stat.percentFaster}%)
+            faster than <span className="perfLib">{stat.lib}</span> on average.
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+)}
+
+
+        {Object.keys(summary).length > 0 && (
           <div className="summaryGrid">
             {Object.entries(summary).map(([library, data]) => (
               <div
                 key={library}
                 className={`summaryCard ${library === 'Overwatch TS'
-                    ? 'summaryCardOverwatch'
-                    : library === 'Zustand'
-                      ? 'summaryCardZustand'
-                      : 'summaryCardRedux'
+                  ? 'summaryCardOverwatch'
+                  : library === 'Zustand'
+                    ? 'summaryCardZustand'
+                    : 'summaryCardRedux'
                   }`}
               >
                 <h2 className="summaryCardTitle">{library}</h2>
@@ -81,12 +101,9 @@ export default function BenchmarkDashboard() {
         {results.length > 0 && (
           <div className="downloadButtons">
             <button
-              onClick={() => benchmarkLogger.saveToLocalStorage()}
-            >
-              Save to Local
-            </button>
-            <button
-              onClick={() => {benchmarkLogger.clearLocalStorage()
+            className="buttonRed"
+              onClick={() => {
+                benchmarkLogger.clearLocalStorage()
                 navigate('/');
               }}
             >

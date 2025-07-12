@@ -28,6 +28,7 @@ export class BenchmarkLogger {
     };
     console.log(`✅ Benchmark captured: ${JSON.stringify(entry)}`);
     this.results.push(entry);
+    this.saveToLocalStorage();
   }
 
   getResults() {

@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <main className="benchmarkMain">
             <div className="benchmarkContainer">
-                <h1 className="benchmarkHeading">Performance Analytics</h1>
+                <h1 className="benchmarkHeading">Performance Analysis</h1>
                 <p className="benchmarkDescription">
                     Compare <span className="highlight">Overwatch TS</span>, Zustand, and Redux Toolkit
                     on reactivity and performance.
