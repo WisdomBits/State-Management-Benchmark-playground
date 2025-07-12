@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <main className="benchmarkMain">
             <div className="benchmarkContainer">
-                <h1 className="benchmarkHeading">Performance Analysis</h1>
+                <h1 className="benchmarkHeading">Watchly Analysis</h1>
                 <p className="benchmarkDescription">
                     Compare <span className="highlight">Overwatch TS</span>, Zustand, and Redux Toolkit
                     on reactivity and performance.
@@ -19,21 +19,21 @@ const Home = () => {
                         to="/overwatch-benchmark"
                         className="blueButton"
                     >
-                        🚀 Overwatch TS Benchmark
+                        🚀 Overwatch TS Benchmark v1.1.8
                     </Link>
 
                     <Link
                         to="/zustand-benchmark"
                         className="greenButton"
                     >
-                        ⚡ Zustand Benchmark
+                        ⚡ Zustand Benchmark v5.0.6
                     </Link>
 
                     <Link
                         to="/redux-benchmark"
                         className="redButton"
                     >
-                        🔥 Redux Toolkit Benchmark
+                        🔥 Redux Toolkit Benchmark v2.8.2
                     </Link>
 
                     <div className="uploadWrapper">
