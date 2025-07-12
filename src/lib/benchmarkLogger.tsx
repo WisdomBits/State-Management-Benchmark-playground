@@ -51,7 +51,6 @@ getSummaryByLibrary() {
       };
     }
     const lib = summary[r.library];
-    lib.count += 1;
 
     if (r.test === '10,000 concurrent state updates') {
       lib.average += r.value;
@@ -64,7 +63,7 @@ getSummaryByLibrary() {
     const relevantRuns = this.results.filter(
       (r) => r.library === lib && r.test === '10,000 concurrent state updates'
     ).length;
-
+    summary[lib].count = relevantRuns;
     if (relevantRuns > 0) {
       summary[lib].average = summary[lib].average / relevantRuns;
     } else {
@@ -72,7 +71,6 @@ getSummaryByLibrary() {
       summary[lib].fastest = 0;
     }
   }
-
   return summary;
 }
 
