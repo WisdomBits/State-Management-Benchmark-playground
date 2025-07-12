@@ -24,10 +24,10 @@ export default function BenchmarkDashboard() {
                 }`}
               >
                 <h2 className="summaryCardTitle">{library}</h2>
-                <p>Tests Run: <span className="highlight">{data.count}</span></p>
-                <p>Average Update: <span className="highlight">{data.average.toFixed(2)}ms</span></p>
-                <p>Fastest Update: <span className="highlight">{data.fastest.toFixed(2)}ms</span></p>
-                <p>Latest Update: <span className="highlight">{data.latest.toFixed(2)}ms</span></p>
+                <p>Tests Run: <span className="highlight-benchmark">{data.count}</span></p>
+                <p>Average Update: <span className="highlight-benchmark">{data.average.toFixed(2)}ms</span></p>
+                <p>Fastest Update: <span className="highlight-benchmark">{data.fastest.toFixed(2)}ms</span></p>
+                <p>Latest Update: <span className="highlight-benchmark">{data.latest.toFixed(2)}ms</span></p>
               </div>
             ))}
           </div>

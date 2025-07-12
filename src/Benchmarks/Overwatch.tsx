@@ -33,7 +33,7 @@ export default function OverwatchBenchmark() {
 
     // Batched 10,000 updates test
     intervalRef.current = setTimeout(() => {
-      const memoryBefore = performance?.memory?.usedJSHeapSize || 0;
+      const memoryBefore = (performance as any)?.memory?.usedJSHeapSize || 0;
       const before = performance.now();
 
       // Overwatch TS batches internally on repeated synchronous updates
@@ -43,7 +43,7 @@ export default function OverwatchBenchmark() {
       }
       const after = performance.now();
       const updateTime = after - before;
-      const memoryAfter = performance?.memory?.usedJSHeapSize || 0;
+      const memoryAfter = (performance as any)?.memory?.usedJSHeapSize || 0;
       const memoryDeltaMB = (memoryAfter - memoryBefore) / (1024 * 1024);
       console.log(`Time for 10,000 updates: ${(after - before).toFixed(2)}ms`);
       benchmarkLogger.log('Overwatch TS', '10,000 concurrent state updates', updateTime,'ms',memoryDeltaMB);
