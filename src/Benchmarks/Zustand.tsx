@@ -30,6 +30,7 @@ export default function ZustandBenchmark() {
   const increment = useStore((state) => state.increment);
   const batchIncrement = useStore((state) => state.batchIncrement);
   const count = useStore((state) => state.count)
+  const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     console.log('%c--- Zustand Benchmark Started ---', 'color: #27ae60');
@@ -57,6 +58,7 @@ export default function ZustandBenchmark() {
       const memoryDeltaMB = (memoryAfter - memoryBefore) / (1024 * 1024);
       console.log(`Time for 10,000 updates: ${(after - before).toFixed(2)}ms`);
       benchmarkLogger.log('Zustand', '10,000 concurrent state updates', updateTime,'ms',memoryDeltaMB);
+      setProcessing(true);
     }, 500);
     return () => {
       if (intervalRef.current) clearTimeout(intervalRef.current);
@@ -69,7 +71,7 @@ export default function ZustandBenchmark() {
       <p className="description">
         Open your console to view performance logs and use React DevTools to observe re-renders.
       </p>
-
+      <p style={{padding:"1rem 0"}}>{!processing ? "Processing..." : "Processed"}</p>
       {ready && (
         <div className="gridContainer">
           {Array.from({ length: 1000 }, (_, i) => (

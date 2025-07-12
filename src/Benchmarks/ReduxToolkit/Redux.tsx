@@ -20,6 +20,7 @@ function ReduxBenchmarkInner() {
   const [ready, setReady] = useState(false);
   const dispatch = useDispatch();
   const count = useSelector((state: RootState) => state.counter.count);
+    const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     console.log('%c--- Redux Toolkit Benchmark Started ---', 'color: #e74c3c');
@@ -48,6 +49,7 @@ function ReduxBenchmarkInner() {
       const memoryDeltaMB = (memoryAfter - memoryBefore) / (1024 * 1024);
       console.log(`Time for 10,000 updates: ${(after - before).toFixed(2)}ms`);
       benchmarkLogger.log('Redux Toolkit', '10,000 concurrent state updates', updateTime,'ms',memoryDeltaMB);
+      setProcessing(true);
     }, 500);
     return () => {
       if (intervalRef.current) clearTimeout(intervalRef.current);
@@ -61,6 +63,7 @@ function ReduxBenchmarkInner() {
         Open your console to view performance logs and use React DevTools to observe re-renders.
       </p>
 
+      <p style={{padding:"1rem 0"}}>{!processing ? "Processing..." : "Processed"}</p>
       {ready && (
         <div className="gridContainer">
           {Array.from({ length: 1000 }, (_, i) => (

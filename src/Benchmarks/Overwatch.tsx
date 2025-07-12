@@ -18,6 +18,7 @@ export default function OverwatchBenchmark() {
   const intervalRef = useRef<any>(null);
   const [ready, setReady] = useState(false);
   const [count ,setCountState] = useSharedState<number>('countState');
+  const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     console.log('%c--- Overwatch TS Benchmark Started ---', 'color: #0984e3');
@@ -47,6 +48,7 @@ export default function OverwatchBenchmark() {
       const memoryDeltaMB = (memoryAfter - memoryBefore) / (1024 * 1024);
       console.log(`Time for 10,000 updates: ${(after - before).toFixed(2)}ms`);
       benchmarkLogger.log('Overwatch TS', '10,000 concurrent state updates', updateTime,'ms',memoryDeltaMB);
+      setProcessing(true);
     }, 500);
      return () => {
       if (intervalRef.current) clearTimeout(intervalRef.current);
@@ -59,6 +61,7 @@ export default function OverwatchBenchmark() {
       <p className="description">
         Open your console to view performance logs and use React DevTools to observe re-renders.
       </p>
+      <p style={{padding:"1rem 0"}}>{!processing ? "Processing..." : "Processed"}</p>
 
       {ready && (
         <div className="gridContainer">
