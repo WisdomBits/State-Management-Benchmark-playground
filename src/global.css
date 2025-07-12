@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #0d0d0d;
+    color: #00ff99;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    padding: 16px;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ff99;
+    margin-bottom: 16px;
+    border-left: 4px solid #00ff99;
+    padding-left: 8px;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #33ffbb;
+    margin-bottom: 12px;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 4px;
+    overflow-y: auto;
+    max-height: 70vh;
+    border: 1px solid #00ff99;
+    padding: 8px;
+    background-color: #1a1a1a;
+    scrollbar-width: thin;
+    scrollbar-color: #00ff99 #0d0d0d;
+}
+
+.gridContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.gridContainer::-webkit-scrollbar-track {
+    background: #0d0d0d;
+}
+
+.gridContainer::-webkit-scrollbar-thumb {
+    background-color: #00ff99;
+    border-radius: 4px;
+}
+
+.gridContainer>div {
+    background-color: #0d0d0d;
+    border: 1px solid #333;
+    padding: 4px;
+    font-size: 0.85rem;
+    color: #00ff99;
+    text-align: center;
+}
+
+
+.benchmarkMain {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb; /* light gray */
+  color: #111827; /* dark text */
+  padding: 1rem;
+  width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  .benchmarkMain {
+    background-color: #111827; /* dark background */
+    color: #f9fafb; /* light text */
+  }
+}
+
+.benchmarkContainer {
+  max-width: 28rem; /* 448px */
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.benchmarkHeading {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;
+}
+
+.benchmarkDescription {
+  color: #4b5563; /* gray-600 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .benchmarkDescription {
+    color: #d1d5db; /* gray-300 */
+  }
+}
+
+.highlight {
+  font-weight: 600;
+  color: #2563eb; /* blue-600 */
+}
+
+.linkButton {
+  background-color: #4b5563; /* gray-600 */
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+
+.linkButton:hover {
+  background-color: #374151; /* gray-700 */
+}
+
+.benchmarkButtonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.blueButton {
+  background-color: #2563eb; /* blue-600 */
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.blueButton:hover {
+  background-color: #1d4ed8; /* blue-700 */
+}
+
+.greenButton {
+  background-color: #16a34a; /* green-600 */
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.greenButton:hover {
+  background-color: #15803d; /* green-700 */
+}
+
+.redButton {
+  background-color: #dc2626; /* red-600 */
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.redButton:hover {
+  background-color: #b91c1c; /* red-700 */
+}
+
+.benchmarkFooter {
+  font-size: 0.75rem; /* text-xs */
+  color: #9ca3af; /* gray-400 */
+  padding-top: 1rem;
+}
