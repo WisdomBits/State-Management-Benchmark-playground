@@ -1,7 +1,7 @@
 'use client';
 
 import { benchmarkLogger } from "../lib/benchmarkLogger";
-import '../BenchmarkDashboard.css';
+import "../benchmarkDashboard.css"
 
 export default function BenchmarkDashboard() {
   const results = benchmarkLogger.getResults();
