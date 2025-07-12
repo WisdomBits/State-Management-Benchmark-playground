@@ -99,6 +99,62 @@ getSummaryByLibrary() {
     a.click();
     URL.revokeObjectURL(url);
   }
+  private storageKey = 'benchmarkResults';
+
+saveToLocalStorage() {
+  try {
+    localStorage.setItem(this.storageKey, JSON.stringify(this.results));
+    console.log('✅ Benchmark results saved to localStorage');
+  } catch (error) {
+    console.error('❌ Failed to save benchmark results:', error);
+  }
+}
+
+loadFromJSONFile(file: File) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const text = e.target?.result as string;
+      const parsed = JSON.parse(text);
+      if (Array.isArray(parsed)) {
+        this.results = parsed;
+        this.saveToLocalStorage(); // Save to localStorage after loading
+        console.log('✅ Benchmark results loaded from JSON file');
+      } else {
+        console.error('❌ Invalid JSON structure');
+      }
+    } catch (error) {
+      console.error('❌ Failed to parse JSON file:', error);
+    }
+  };
+  reader.readAsText(file);
+}
+
+loadFromLocalStorage() {
+  try {
+    const data = localStorage.getItem(this.storageKey);
+    if (data) {
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed)) {
+        this.results = parsed;
+        console.log('✅ Benchmark results loaded from localStorage');
+      }
+    }
+  } catch (error) {
+    console.error('❌ Failed to load benchmark results:', error);
+  }
+}
+
+clearLocalStorage() {
+  try {
+    localStorage.removeItem(this.storageKey);
+    this.results = []
+    console.log('✅ Benchmark results cleared from localStorage');
+  } catch (error) {
+    console.error('❌ Failed to clear benchmark results:', error);
+  }
+}
+
 }
 
 export const benchmarkLogger = new BenchmarkLogger();

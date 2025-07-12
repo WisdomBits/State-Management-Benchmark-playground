@@ -2,10 +2,20 @@
 
 import { benchmarkLogger } from "../lib/benchmarkLogger";
 import "../benchmarkDashboard.css"
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function BenchmarkDashboard() {
-  const results = benchmarkLogger.getResults();
+  const navigate = useNavigate();
+  const [results, setResults] = useState(benchmarkLogger.getResults());
   const summary = benchmarkLogger.getSummaryByLibrary();
+
+  useEffect(() => {
+    if (results.length === 0) {
+      benchmarkLogger.loadFromLocalStorage();
+      setResults(benchmarkLogger.getResults())
+    }
+  }, []);
 
   return (
     <div className="dashboardPage">
@@ -15,13 +25,12 @@ export default function BenchmarkDashboard() {
             {Object.entries(summary).map(([library, data]) => (
               <div
                 key={library}
-                className={`summaryCard ${
-                  library === 'Overwatch TS'
+                className={`summaryCard ${library === 'Overwatch TS'
                     ? 'summaryCardOverwatch'
                     : library === 'Zustand'
                       ? 'summaryCardZustand'
                       : 'summaryCardRedux'
-                }`}
+                  }`}
               >
                 <h2 className="summaryCardTitle">{library}</h2>
                 <p>Tests Run: <span className="highlight-benchmark">{data.count}</span></p>
@@ -58,7 +67,7 @@ export default function BenchmarkDashboard() {
                       <td>{result.test}</td>
                       <td>{result.value.toFixed(2)}</td>
                       <td>{result.unit}</td>
-                       <td>
+                      <td>
                         {result.memoryDeltaMB !== undefined ? result.memoryDeltaMB.toFixed(2) : '-'}
                       </td>
                       <td>{new Date(result.timestamp).toLocaleString()}</td>
@@ -71,6 +80,18 @@ export default function BenchmarkDashboard() {
 
         {results.length > 0 && (
           <div className="downloadButtons">
+            <button
+              onClick={() => benchmarkLogger.saveToLocalStorage()}
+            >
+              Save to Local
+            </button>
+            <button
+              onClick={() => {benchmarkLogger.clearLocalStorage()
+                navigate('/');
+              }}
+            >
+              Clear Local
+            </button>
             <button
               onClick={() => benchmarkLogger.downloadCSV()}
               className="buttonBlue"

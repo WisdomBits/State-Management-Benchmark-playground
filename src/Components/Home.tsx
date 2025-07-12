@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { benchmarkLogger } from '../lib/benchmarkLogger';
 
 const Home = () => {
     return (
@@ -34,12 +35,28 @@ const Home = () => {
                     >
                         🔥 Redux Toolkit Benchmark
                     </Link>
-                </div>
 
-                <footer className="benchmarkFooter">
-                    Built for recording performance tests and content.
-                </footer>
-            </div>
+                    <div className="uploadWrapper">
+                        <input
+                            type="file"
+                            accept="application/json"
+                            onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                    benchmarkLogger.loadFromJSONFile(file);
+                                }
+                            }}
+                            className="uploadInput"
+                            placeholder='Upload JSON File'
+                        />
+                    </div>
+                    </div>
+
+
+                    <footer className="benchmarkFooter">
+                        Built for recording performance tests and content.
+                    </footer>
+                </div>
         </main>
     )
 }
