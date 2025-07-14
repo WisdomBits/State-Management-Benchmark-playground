@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  height: 100vh;
+  height: calc(100vh - 6rem);
 }
 
 .summaryGrid {
@@ -37,7 +37,7 @@
 .summaryCard {
   padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   color: white;
 }
 
@@ -149,8 +149,9 @@
 .buttonGreen:hover {
   background-color: #15803d;
 }
+
 .buttonRed {
-  color: rgb(2, 2, 2);
+  color: white;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
@@ -162,7 +163,8 @@
 .perfSummaryCard {
   padding: 1.5rem;
   border-radius: 1rem;
-  background: linear-gradient(135deg, #1e3a8a, #6d28d9); /* deep indigo to purple */
+  background: linear-gradient(135deg, #1e3a8a, #6d28d9);
+  /* deep indigo to purple */
   color: #f9fafb;
   box-shadow:
     0 0 20px rgba(109, 40, 217, 0.5),
@@ -216,17 +218,133 @@
   content: "⚡";
   position: absolute;
   left: 0;
-  color: #facc15; /* yellow highlight */
+  color: #facc15;
+  /* yellow highlight */
   font-size: 1rem;
 }
 
 .perfHighlight {
   font-weight: 700;
-  color: #facc15; /* yellow */
+  color: #facc15;
+  /* yellow */
 }
 
 .perfLib {
   text-decoration: underline;
   font-weight: 600;
-  color: #93c5fd; /* light blue */
+  color: #93c5fd;
+  /* light blue */
+}
+
+.benchmarkSection {
+  background-color: #ffffff;
+  color: #111827;
+  padding: 3rem 1rem;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  .benchmarkSection {
+    background-color: #111827;
+    color: #f9fafb;
+  }
+}
+
+.benchmarkContainer {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.benchmarkHeading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .benchmarkHeading {
+    font-size: 2rem;
+  }
+}
+
+.benchmarkDescription {
+  max-width: 40rem;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1rem;
+  color: #374151;
+}
+
+@media (prefers-color-scheme: dark) {
+  .benchmarkDescription {
+    color: #d1d5db;
+  }
+}
+
+.benchmarkList {
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+@media (prefers-color-scheme: dark) {
+  .benchmarkList {
+    color: #e5e7eb;
+  }
+}
+
+.benchmarkActions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .benchmarkActions {
+    flex-direction: row;
+  }
+}
+
+.benchmarkButton {
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  color: rgb(7, 7, 7);
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+  display: inline-block;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: #ffffff;
+}
+
+.benchmarkButton:hover {
+  transform: translateY(-2px);
+}
+
+.benchmarkButtonBlue {
+  background-color: #2563eb;
+}
+
+.benchmarkButtonBlue:hover {
+  background-color: #1d4ed8;
+}
+
+.benchmarkButtonGreen {
+  background-color: #16a34a;
+}
+
+.benchmarkButtonGreen:hover {
+  background-color: #15803d;
 }

@@ -6,11 +6,12 @@ const Home = () => {
     return (
         <main className="benchmarkMain">
             <div className="benchmarkContainer">
-                <h1 className="benchmarkHeading">Watchly Analysis</h1>
+                <h1 className="benchmarkHeading">Watchly Benchmark</h1>
                 <p className="benchmarkDescription">
                     Compare <span className="highlight">Overwatch TS</span>, Zustand, and Redux Toolkit
                     on reactivity and performance.
                 </p>
+                <p><Link style={{color: "#fff"}} to={"/benchmark-methodology"}>How we Benchmark?</Link></p>
 
                 <h4>Check Results: <Link className="linkButton" to={"/benchmark-stats"}>Performance Analytics</Link></h4>
 
@@ -36,7 +37,8 @@ const Home = () => {
                         🔥 Redux Toolkit Benchmark v2.8.2
                     </Link>
 
-                    <div className="uploadWrapper">
+                    <div style={{display: "flex", flexDirection: "column", gap : "0.5rem"}} className="uploadWrapper">
+                        <label>Upload Previous Results JSON</label>
                         <input
                             type="file"
                             accept="application/json"
@@ -54,7 +56,7 @@ const Home = () => {
 
 
                     <footer className="benchmarkFooter">
-                        Built for recording performance tests and content.
+                        Built for recording performance tests and memory deltas.
                     </footer>
                 </div>
         </main>
